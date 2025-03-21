@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - next
+      - next-major
+      - '[0-9]+.[0-9]+.x'
+      - alpha
+      - beta
+      - feature/*
+      - fix/*
+  pull_request:
+    branches:
+      - main
+      - next
+      - next-major
+      - '[0-9]+.[0-9]+.x'
+      - alpha
+      - beta
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18, 20, 22, 23]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Test
+        run: npm run test
