@@ -1,22 +1,23 @@
-import BaseEntity from "./BaseEntity";
-import Address from "./Address";
+import crypto from 'crypto'
+import BaseEntity from '../index'
+import Address from './Address'
 
 export default class Person extends BaseEntity<Person> {
-  protected _maskableFields = ["name"];
-  protected _requiredFields = ["name"];
+  protected _maskableFields = ['name']
+  protected _requiredFields = ['name']
   protected _schemaHints = {
-    id: { type: "string" },
-    name: { type: "string" },
-    age: { type: "number", nullable: true },
-    isActive: { type: "boolean", nullable: false },
-    createAt: { type: "number" },
-    hobbies: { type: "array", nullable: true },
+    id: {type: 'string'},
+    name: {type: 'string'},
+    age: {type: 'number', nullable: true},
+    isActive: {type: 'boolean', nullable: false},
+    createAt: {type: 'number'},
+    hobbies: {type: 'array', nullable: true},
     address: {
-      type: "object",
+      type: 'object',
       schema: Address.getJsonSchema(),
-      nullable: true,
-    },
-  };
+      nullable: true
+    }
+  }
 
   constructor(
     public id: string = crypto.randomUUID(),
@@ -27,18 +28,18 @@ export default class Person extends BaseEntity<Person> {
     public hobbies: string[] = [],
     public address?: Address
   ) {
-    super();
+    super()
   }
 
   static example(): Person {
     return new Person(
       crypto.randomUUID(),
-      "John Doe",
+      'Alice',
       Math.floor(Math.random() * 100) + 1,
       true,
       Date.now(),
-      ["reading", "video game"],
+      ['reading', 'video game'],
       Address.example()
-    );
+    )
   }
 }
