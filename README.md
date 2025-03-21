@@ -1,8 +1,14 @@
 # smart-entity-js
+[![Build](https://github.com/rising3/smart-entity-js/actions/workflows/build.yml/badge.svg)](https://github.com/rising3/smart-entity-js/actions/workflows/build.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 A smart entity that implements generic methods such as clone(), toJSON(), and fromJSON().
 
-## Install
+## Requirements
+
+- Node.js 18 or higher
+
+## How to install
 
 To install:
 ```
@@ -15,7 +21,7 @@ To run the example:
 ```
 npm start
 ```
-### Creating an Entity
+### How to use library
 
 Create an entity by inheriting the BaseEntity class.
 As an example, create a Person class and an Address class.
@@ -50,7 +56,7 @@ class Person extends BaseEntity<Person> {
     static example(): Person {
         return new Person(
             crypto.randomUUID(),
-            "John Doe",
+            "Alice",
             Math.floor(Math.random() * 100) + 1,
             true,
             Date.now(),
@@ -166,7 +172,7 @@ const json = JSON.stringify({
   age: 1,
   isActive: false,
   createAt: 1742483906966,
-  hobbies: ["Reading", "video game"],
+  hobbies: ["reading", "video game"],
   address: { postalCode: "123-4567", address: "tokyo" },
 });
 
@@ -193,7 +199,7 @@ person.toJSON();
 
 result:
 ``` json
-{"id":"e110860c-c201-4977-8f5f-97c7eb0e31ba","name":"John Doe","age":5,"isActive":true,"createAt":1742492794876,"hobbies":["reading","video game"],"address":{"postalCode":"123-4567","address":"tokyo"}}
+{"id":"e110860c-c201-4977-8f5f-97c7eb0e31ba","name":"Alice","age":5,"isActive":true,"createAt":1742492794876,"hobbies":["reading","video game"],"address":{"postalCode":"123-4567","address":"tokyo"}}
 ```
 
 ##### pretty JSON
@@ -206,7 +212,7 @@ result:
 ``` json
 {
   "id": "e110860c-c201-4977-8f5f-97c7eb0e31ba",
-  "name": "John Doe",
+  "name": "Alice",
   "age": 5,
   "isActive": true,
   "createAt": 1742492794876,
@@ -261,3 +267,20 @@ Create a clone by deep copying an instance of the Person class.
 ``` typescript
 const clone = person.clone();
 ```
+## How to build from source
+
+### prerequisites
+
+node.js, npm, git need to be installed.
+
+```sh
+git clone https://github.com/rising3/smart-entity-js.git
+cd smart-entity-js
+npm i
+npm run test
+npm run build
+```
+
+## License
+
+[Apache 2.0](LICENSE)
