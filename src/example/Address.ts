@@ -1,6 +1,6 @@
-import BaseEntity from '../index'
+import SmartEntity from '../index'
 
-export default class Address extends BaseEntity<Address> {
+export default class Address extends SmartEntity<Address> {
   protected _maskableFields = ['postalCode', 'address']
   protected _requiredFields = ['postalCode', 'address']
   protected _schemaHints = {

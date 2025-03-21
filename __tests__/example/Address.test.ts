@@ -66,7 +66,7 @@ describe('Address Class', () => {
     expect(address.postalCode).toBe(clone.postalCode)
     expect(address.address).toBe(clone.address)
 
-    expect(clone).not.toBe(address) // not equal reference
+    expect(address).not.toBe(clone) // not equal reference
   })
 
   test('example() should create a example', () => {

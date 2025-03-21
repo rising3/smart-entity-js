@@ -23,12 +23,12 @@ npm start
 ```
 ### How to use library
 
-Create an entity by inheriting the BaseEntity class.
+Create an entity by inheriting the SmartEntity class.
 As an example, create a Person class and an Address class.
 
 #### Person Class
 ``` typescript
-class Person extends BaseEntity<Person> {
+class Person extends SmartEntity<Person> {
     protected _maskableFields = ["name"];
     protected _requiredFields = ["name"];
     protected _schemaHints = {
@@ -69,7 +69,7 @@ class Person extends BaseEntity<Person> {
 #### Address Class
 
 ``` typescript
-class Address extends BaseEntity<Address> {
+class Address extends SmartEntity<Address> {
     protected _maskableFields = ["postalCode", "address"];
     protected _requiredFields = ["postalCode", "address"];
     protected _schemaHints = {

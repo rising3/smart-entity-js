@@ -153,7 +153,7 @@ describe('Person Class', () => {
     expect(person.address?.postalCode).toBe(clone.address?.postalCode)
     expect(person.address?.address).toBe(clone.address?.address)
 
-    expect(clone).not.toBe(person) // not equal reference
+    expect(person).not.toBe(clone) // not equal reference
   })
 
   test('example() should create a example', () => {
