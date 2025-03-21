@@ -1,13 +1,13 @@
 import Ajv, { JSONSchemaType } from "ajv";
 
-export default abstract class BaseEntity<T> {
+export default abstract class SmartEntity<T> {
   protected abstract _maskableFields: string[];
   protected abstract _requiredFields: string[];
   protected abstract _schemaHints: Record<
     string,
     { type: string; schema?: JSONSchemaType<any>; nullable?: boolean }
   >;
-  static example: () => BaseEntity<any>;
+  static example: () => SmartEntity<any>;
 
   protected static safeJsonParse<T>(json: string): T | null {
     try {
@@ -58,7 +58,7 @@ export default abstract class BaseEntity<T> {
   }
 
   static fromJSON<U>(json: string): U {
-    const data = BaseEntity.safeJsonParse<U>(json);
+    const data = SmartEntity.safeJsonParse<U>(json);
     if (!data) throw new Error("Invalid JSON data: " + json);
 
     const schema = this.getJsonSchema<U>();
@@ -67,7 +67,7 @@ export default abstract class BaseEntity<T> {
 
     if (!validate(data)) {
       throw new Error(
-        "Invalid JSON: " + BaseEntity.safeJsonStringify(validate.errors)
+        "Invalid JSON: " + SmartEntity.safeJsonStringify(validate.errors)
       );
     }
 
@@ -82,25 +82,33 @@ export default abstract class BaseEntity<T> {
 
       const value = (this as any)[key];
 
-      if (value instanceof BaseEntity) {
+      if (value instanceof SmartEntity) {
         jsonObject[key] =
-          BaseEntity.safeJsonParse(value.toJSON(pretty, maskSensitive)) ?? null;
+          SmartEntity.safeJsonParse(value.toJSON(pretty, maskSensitive)) ?? null;
       } else {
-        jsonObject[key] =
-          maskSensitive && this._maskableFields.includes(key)
-            ? "*".repeat(String(value).length)
-            : value;
+        if (Array.isArray(value)) {
+          jsonObject[key] =
+            maskSensitive && this._maskableFields.includes(key)
+              ? value.map(v => "*".repeat(String(v).length))
+              : value;
+
+        } else {
+          jsonObject[key] =
+            maskSensitive && this._maskableFields.includes(key)
+              ? "*".repeat(String(value).length)
+              : value;
+        }
       }
     }
 
-    return BaseEntity.safeJsonStringify(jsonObject, pretty);
+    return SmartEntity.safeJsonStringify(jsonObject, pretty);
   }
 
   clone(): T {
-    return (this.constructor as typeof BaseEntity<T>).fromJSON(this.toJSON());
+    return (this.constructor as typeof SmartEntity<T>).fromJSON(this.toJSON());
   }
 
   validate(): void {
-    (this.constructor as typeof BaseEntity<T>).fromJSON(this.toJSON());
+    (this.constructor as typeof SmartEntity<T>).fromJSON(this.toJSON());
   }
 }
