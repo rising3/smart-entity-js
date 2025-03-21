@@ -86,18 +86,10 @@ export default abstract class SmartEntity<T> {
         jsonObject[key] =
           SmartEntity.safeJsonParse(value.toJSON(pretty, maskSensitive)) ?? null;
       } else {
-        if (Array.isArray(value)) {
-          jsonObject[key] =
-            maskSensitive && this._maskableFields.includes(key)
-              ? value.map(v => "*".repeat(String(v).length))
-              : value;
-
-        } else {
-          jsonObject[key] =
-            maskSensitive && this._maskableFields.includes(key)
-              ? "*".repeat(String(value).length)
-              : value;
-        }
+        jsonObject[key] =
+          maskSensitive && this._maskableFields.includes(key)
+            ? Array.isArray(value) ? value.map(v => "*".repeat(String(v).length)) : "*".repeat(String(value).length)
+            : value;
       }
     }
 
