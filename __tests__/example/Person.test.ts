@@ -1,7 +1,6 @@
 import {describe, expect, test} from '@jest/globals'
 
-import Person from '../../src/example/Person'
-import Address from '../../src/example/Address'
+import { Person, Address } from '../../src/example/index'
 
 describe('Person Class', () => {
   test('toJSON() should return valid JSON', () => {

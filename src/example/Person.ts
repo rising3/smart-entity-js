@@ -1,8 +1,8 @@
 import crypto from 'crypto'
 import SmartEntity from '../index'
-import Address from './Address'
+import { Address } from './Address'
 
-export default class Person extends SmartEntity<Person> {
+export class Person extends SmartEntity<Person> {
   protected _maskableFields = ['name']
   protected _requiredFields = ['name']
   protected _schemaHints = {
