@@ -1,6 +1,6 @@
 import SmartEntity from '../index'
 
-export default class Address extends SmartEntity<Address> {
+export class Address extends SmartEntity<Address> {
   protected _maskableFields = ['postalCode', 'address']
   protected _requiredFields = ['postalCode', 'address']
   protected _schemaHints = {

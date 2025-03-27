@@ -1,4 +1,4 @@
-import Person from './Person'
+import { Person } from './index'
 
 const json = JSON.stringify(
   {
