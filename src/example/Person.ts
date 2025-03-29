@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 import SmartEntity from '../index'
-import { Address } from './Address'
+import {Address} from './Address'
 
 export class Person extends SmartEntity<Person> {
   protected _maskableFields = ['name']

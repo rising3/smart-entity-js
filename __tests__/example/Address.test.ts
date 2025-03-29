@@ -1,5 +1,5 @@
 import {describe, expect, test} from '@jest/globals'
-import { Address } from '../../src/example/index'
+import {Address} from '../../src/example/index'
 
 describe('Address Class', () => {
   test('toJSON() should return valid JSON', () => {
@@ -56,7 +56,7 @@ describe('Address Class', () => {
   test('fromJSON() should not create a invalid Address instance', () => {
     const json = '{"postalCod": "000-0000", "address": "osaka"}'
 
-    expect(() => Address.fromJSON(json)).toThrow(/Invalid JSON: /)
+    expect(() => Address.fromJSON(json)).toThrow(/Validation failed: /)
   })
 
   test('clone() should create a deep copy', () => {
@@ -95,6 +95,6 @@ describe('Address Class', () => {
   test('validate() should validate a invalid valid Address instance', () => {
     const address = new Address()
 
-    expect(() => address.validate()).toThrow(/Invalid JSON: /)
+    expect(() => address.validate()).toThrow(/Validation failed: /)
   })
 })

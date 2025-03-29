@@ -46,5 +46,8 @@ module.exports = defineConfig([globalIgnores([
         sourceType: "script",
     },
 
-    rules: {},
+    rules: {
+        quotes: ["error", "single"],
+        semi: ["error", "never"],
+    },
 }]);
