@@ -1,6 +1,6 @@
 import {describe, expect, test} from '@jest/globals'
 
-import { Person, Address } from '../../src/example/index'
+import {Person, Address} from '../../src/example/index'
 
 describe('Person Class', () => {
   test('toJSON() should return valid JSON', () => {
@@ -128,7 +128,7 @@ describe('Person Class', () => {
       address: {postalCode: '123-4567', address: 'tokyo'}
     })
 
-    expect(() => Person.fromJSON(json)).toThrow(/Invalid JSON: /)
+    expect(() => Person.fromJSON(json)).toThrow(/Validation failed: /)
   })
 
   test('clone() should create a deep copy', () => {
@@ -191,6 +191,6 @@ describe('Person Class', () => {
   test('validate() should validate a invalid valid Address instance', () => {
     const person = new Person()
 
-    expect(() => person.validate()).toThrow(/Invalid JSON: /)
+    expect(() => person.validate()).toThrow(/Validation failed: /)
   })
 })
