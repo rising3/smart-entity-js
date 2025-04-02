@@ -16,15 +16,18 @@
   },
   "keywords": [
     "entity",
-    "to JSON",
-    "from JSON",
+    "serializes",
+    "deserializes",
     "clone",
     "JSON Schema"
   ],
-  "homepage": "https://github.com/rising3/smart-entity-js#readme",
+  "homepage": "https://rising3.github.io/smart-entity-js/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rising3/smart-entity-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rising3/smart-entity-js/issues"
   },
   "author": "rising3(Michio Nakagawa)",
   "license": "Apache-2.0",
