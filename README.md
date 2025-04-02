@@ -12,15 +12,11 @@ A smart entity that implements generic methods such as clone(), toJSON(), and fr
 
 To install:
 ```
-npm i
+npm i @rising3/smart-entity-js
 ```
 
 ## Getting started
 
-To run the example:
-```
-npm start
-```
 ### How to use library
 
 Create an entity by inheriting the SmartEntity class.
@@ -279,6 +275,11 @@ cd smart-entity-js
 npm i
 npm run test
 npm run build
+```
+
+To run the example:
+```
+npm start
 ```
 
 ## License
