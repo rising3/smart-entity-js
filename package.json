@@ -1,5 +1,5 @@
 {
-  "name": "smart-entity-js",
+  "name": "@rising3/smart-entity-js",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
