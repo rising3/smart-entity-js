@@ -1,11 +1,16 @@
-name: Build and Deploy Docs
+name: gendocs-and-deploy-docs
 
 on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - release-and-publish
+    types: 
+      - completed
   workflow_dispatch:
-
+        
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,10 +22,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22
+          node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run tests
         run: npm test
