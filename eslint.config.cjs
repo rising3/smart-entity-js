@@ -27,7 +27,6 @@ const gitignorePath = path.resolve(__dirname, ".gitignore");
 module.exports = defineConfig([globalIgnores([
     "**/.prettierrc",
     "**/tsconfig.json",
-    "**/tsconfig.esm.json",
 ]), includeIgnoreFile(gitignorePath), {
     extends: compat.extends("eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"),
 

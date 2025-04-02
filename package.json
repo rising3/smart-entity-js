@@ -4,10 +4,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist ./docs", 
     "build": "tsc -p .",
     "start": "ts-node ./src/example/example.ts",
     "test": "jest",
+    "docs": "npx typedoc",
     "lint": "eslint src/**/*.ts __tests__/**/*.ts",
     "lint:fix": "eslint src/**/*.ts __tests__/**/*.ts --fix",
     "format": "prettier --check src/**/*.ts __tests__/**/*.ts",
@@ -47,6 +48,7 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.28.1",
     "typescript": "^5.8.2"
   },
   "dependencies": {
