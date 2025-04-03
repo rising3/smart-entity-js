@@ -4,6 +4,9 @@ tsconfig.json
 babel.config.js
 jest.config.js
 eslint.config.cjs
+typedoc.json
 
+.github
 src
 __tests__
+docs
