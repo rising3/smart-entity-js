@@ -164,7 +164,7 @@ Validate the JSON using a JSON Schema.
 ``` typescript
 const json = JSON.stringify({
   id: "b46021c4-2cf2-4167-a31c-50c9d297e6b8",
-  name: "Jhon Doe",
+  name: "Alice",
   age: 1,
   isActive: false,
   createAt: 1742483906966,
